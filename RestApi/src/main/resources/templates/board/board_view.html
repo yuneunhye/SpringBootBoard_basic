@@ -1,0 +1,52 @@
+{{>/layout/header}}
+
+{{>/layout/nav}}
+
+
+
+
+<div class="container mt-3">
+  <h3>Navbar With Dropdown</h3>
+  <p>This example adds a dropdown menu in the navbar.</p>
+  
+
+   <table class="table">
+   	<colgroup>
+   		<col width="30%">
+   		<col width="*">
+   	</colgroup>
+    <tbody>
+      <tr>
+        <th>제목</td>
+        <td>
+        	{{boardDto.id}} 
+        </td>
+      </tr>
+      <tr>
+        <th>작성자</td>
+        <td>
+        	{{boardDto.title}} 
+        </td>
+      </tr>
+      <tr>
+        <th>내용</td>
+        <td>
+        	 {{{boardDto.contents}}}
+        </td>
+      </tr>
+      
+      
+    </tbody>
+  </table>
+ </div>
+
+
+ <div class="container" style="text-align:right">
+	<button type="button" class="btn btn-primary">글쓰기</button>
+ </div>
+
+  
+{{>/layout/footer}}
+
+
+

@@ -1,0 +1,91 @@
+{{>/layout/header}}
+
+{{>/layout/nav}}
+<div class="container mt-3">
+  <h3>Navbar With Dropdown</h3>
+  <p>This example adds a dropdown menu in the navbar.</p>
+  
+<form name="myform" id="myform">
+   <table class="table">
+   	<colgroup>
+   		<col width="30%">
+   		<col width="*">
+   	</colgroup>
+    <tbody>
+      <tr>
+        <th>제목</td>
+        <td>
+        	 <div class="input-group">
+			    <input type="text" class="form-control" placeholder="제목을 입력하세요"
+			    name="title" id="title">
+			 </div>
+        </td>
+      </tr>
+      <tr>
+        <th>작성자</td>
+        <td>
+        	 <div class="input-group">
+			    <input type="text" class="form-control" placeholder="이름을 입력하세요"
+			    name="writer" id="writer">
+			 </div>
+        </td>
+      </tr>
+      <tr>
+        <th>내용</td>
+        <td>
+        	 <div class="input-group">
+			    <textarea class="form-control" placeholder="내용 입력하세요"
+			    name="contents" id="contents" rows="5"></textarea>
+			 </div>
+        </td>
+      </tr>
+      
+      
+    </tbody>
+  </table>
+ </div>
+
+
+ <div class="container" style="text-align:right">
+	<button type="button" class="btn btn-primary" id="btnWrite">글쓰기</button>
+ </div>
+</form>
+  
+{{>/layout/footer}}
+
+<script>
+$(()=>{
+		
+	$("#btnWrite").click( ()=>{
+		//alert('dddd');
+		$.ajax({
+			url:"/board/save",
+			method:"POST",
+			dataType:"json", //데이터를 받아올때 json형태로 받아와라 
+			data:{title:$("#title").val(), "writer":$("#writer").val(), 
+				"contents":$("#contents").val()}
+		})
+		.done((res, status, err)=>{
+			if( res.result == "success")
+			{
+				alert("글이 등록되었습니다.");
+				location.href="/board/list";
+			}
+			else
+			{
+				alert("글이 등록되지 않았습니다.");
+				location.href="/board/list";
+			}
+		})
+		.fail((res, statis, err)=>{
+			console.log( err );
+		})
+	});
+})
+
+</script>
+
+
+
+
+
